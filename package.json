@@ -1,0 +1,45 @@
+{
+  "name": "news-links",
+  "version": "1.0.0",
+  "description": "An app for collection and sharing popular news links and let the world know what is trending",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.2.0",
+    "graphql-yoga": "^1.16.7",
+    "jest": "^23.6.0",
+    "jsonwebtoken": "^8.4.0",
+    "nodemon": "^1.18.5",
+    "prisma": "^1.23.1",
+    "prisma-binding": "^2.2.11",
+    "prisma-client-lib": "^1.23.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  },
+  "scripts": {
+    "test": "jest /tests/* --coverage",
+    "start": "nodemon --exec babel-node api/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nzediegwu1/news-links.git"
+  },
+  "keywords": [
+    "news",
+    "links",
+    "read",
+    "share",
+    "gist"
+  ],
+  "author": "anaeze nsoffor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nzediegwu1/news-links/issues"
+  },
+  "homepage": "https://github.com/nzediegwu1/news-links-api#readme"
+}
