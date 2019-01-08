@@ -1,4 +1,4 @@
-# News-Links
+# News-link
 
 A GraphQL API for managing popular news links. Users can vote their favourite news links and let the world know what's trending
 
@@ -41,7 +41,7 @@ A GraphQL API for managing popular news links. Users can vote their favourite ne
 ## Installation and Setup
 
     1. Install and start docker on local machine
-    2. Clone this repo "git clone https://github.com/nzediegwu1/news-links.git"
+    2. Clone this repo "git clone https://github.com/nzediegwu1/news-link.git"
     3. Run "yarn install" to install dependencies
     4. Create and start server for prisma API: `docker-compose up -d`
     5. Deploy prisma api to server: `npx prisma deploy`
@@ -66,5 +66,5 @@ To contribute to the project, follow the instructions below
 
 ## Licence
 
-- This project is licensed under the [MIT License](https://github.com/nzediegwu1/news-links/blob/develop/LICENSE)
+- This project is licensed under the [MIT License](https://github.com/nzediegwu1/news-link/blob/develop/LICENSE)
 - Copyright © 2018 Anaeze Nsoffor
