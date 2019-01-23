@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const { SECRET_KEY } = process.env;
 
-const authorize = async (resolve, root, args, context) => {
+const authorize = (resolve, root, args, context) => {
   const authorization = context.request.get('Authorization');
   if (authorization) {
     const token = authorization.replace('Bearer ', '');

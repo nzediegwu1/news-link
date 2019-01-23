@@ -1,6 +1,5 @@
-/* eslint-disable object-curly-newline */
 module.exports = {
-  info: () => 'This is the API for blog-connect',
+  info: () => 'This is the API for newsLink',
   async feed(root, { filter, first, skip, orderBy }, context) {
     const where = filter
       ? { OR: [{ description_contains: filter }, { url_contains: filter }] }
