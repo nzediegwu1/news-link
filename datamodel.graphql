@@ -1,15 +1,16 @@
 type Link {
   id: ID! @unique
   createdAt: DateTime!
+  title: String!
   description: String!
   url: String!
+  imageUrl: String!
   postedBy: User
   votes: [Vote!]!
 }
 
 type User {
   id: ID! @unique
-  createdAt: DateTime!
   name: String!
   email: String! @unique
   password: String!

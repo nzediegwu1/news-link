@@ -1,4 +1,3 @@
-/* eslint-disable object-curly-newline */
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -7,14 +6,13 @@ require('dotenv').config();
 const { SECRET_KEY } = process.env;
 
 module.exports = {
-  postLink: (root, { url, description, userId }, context) => context.db.createLink({
-    url,
-    description,
+  postLink: (root, { userId, ...args }, context) => context.db.createLink({
+    ...args,
     postedBy: { connect: { id: userId } },
   }),
 
-  updateLink: (root, { url, description, id, userId }, context) => context.db.updateLink({
-    data: { url, description, postedBy: { connect: { id: userId } } },
+  updateLink: (root, { userId, id, link, ...args }, context) => context.db.updateLink({
+    data: { ...args, postedBy: { connect: { id: userId } } },
     where: { id },
   }),
 
