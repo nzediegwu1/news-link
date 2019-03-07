@@ -9,13 +9,14 @@ const userSchema = {
     .required(),
   password: joi
     .string()
+    .trim()
     .min(6)
     .required(),
 };
 const childSchema = {
   name: joi
     .string()
-    .alphanum()
+    .trim()
     .min(2)
     .max(30)
     .required(),
