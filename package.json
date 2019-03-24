@@ -8,6 +8,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.13.2",
     "dotenv": "^6.2.0",
     "graphql-middleware": "^3.0.0",
     "graphql-yoga": "^1.16.7",

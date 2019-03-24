@@ -1,5 +1,6 @@
 import joi from 'joi';
 import validateInput from '../../helpers/validateInput';
+import { helmet } from '../../helpers/errorHandler';
 
 const linkSchema = {
   title: joi
@@ -10,12 +11,9 @@ const linkSchema = {
     .string()
     .min(10)
     .max(250),
-  url: joi
-    .string()
-    .uri(),
-  imageUrl: joi
-    .string()
-    .uri(),
+  url: joi.string().uri(),
+  imageUrl: joi.string().uri(),
+  imagePublicId: joi.string(),
   userId: joi
     .string()
     .alphanum()
@@ -30,6 +28,6 @@ const childSchema = {
 };
 
 module.exports = {
-  postLink: validateInput(linkSchema),
-  updateLink: validateInput(linkSchema, childSchema),
+  postLink: helmet(validateInput(linkSchema)),
+  updateLink: helmet(validateInput(linkSchema, childSchema)),
 };

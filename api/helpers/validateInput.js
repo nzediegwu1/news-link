@@ -3,7 +3,10 @@ import { createError } from 'apollo-errors';
 
 export default (baseSchema, childSchema) => (resolve, root, args, context) => {
   const inputSchema = childSchema ? { ...baseSchema, ...childSchema } : baseSchema;
-  const schema = joi.object().keys(inputSchema);
+  const schema = joi
+    .object()
+    .keys(inputSchema)
+    .and('imageUrl', 'imagePublicId');
   const { error } = schema.validate(args, {
     abortEarly: false,
     presence: childSchema ? 'optional' : 'required',

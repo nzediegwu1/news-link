@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { helmet } from '../helpers/errorHandler';
 
 require('dotenv').config();
 
@@ -17,8 +18,8 @@ const authorize = (resolve, root, args, context) => {
 
 module.exports = {
   Mutation: {
-    postLink: authorize,
-    updateLink: authorize,
+    postLink: helmet(authorize),
+    updateLink: helmet(authorize),
     deleteLink: authorize,
     vote: authorize,
     deleteVote: authorize,

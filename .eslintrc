@@ -1,6 +1,7 @@
 {
   "extends": "airbnb-base",
   "rules": {
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "import/prefer-default-export": "off"
   }
 }

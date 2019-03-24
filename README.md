@@ -50,7 +50,7 @@ A GraphQL API for managing popular news links. Users can vote their favourite ne
 ### Finally
 
 1. Goto http://localhost:4000 on your browser to test the endpoints on GraphQL playground or
-2. Goto: https://www.graphqlbin.com/v2/K8GqcM to use sample requests
+2. Goto: https://graphqlbin.com/v2/k2WNh6 to use sample requests
 
 ## How to Contribute
 
