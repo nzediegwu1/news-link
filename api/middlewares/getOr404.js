@@ -1,4 +1,6 @@
 /* eslint-disable no-param-reassign */
+import { helmet } from '../helpers/errorHandler';
+
 const conditions = args => ({
   user: { email: args.email },
   vote: { id: args.id },
@@ -17,7 +19,7 @@ const getOr404Middleware = model => async (resolve, root, args, context) => {
 const getLinkOr404 = getOr404Middleware('link');
 module.exports = {
   Mutation: {
-    updateLink: getLinkOr404,
+    updateLink: helmet(getLinkOr404),
     deleteLink: getLinkOr404,
     signin: getOr404Middleware('user'),
     deleteVote: getOr404Middleware('vote'),

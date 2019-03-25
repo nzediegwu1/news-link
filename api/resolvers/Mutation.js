@@ -1,22 +1,37 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import cloudinary from 'cloudinary';
+import { helmet } from '../helpers/errorHandler';
+import { cloudinaryConfig } from '../config';
 
 require('dotenv').config();
 
+cloudinary.config(cloudinaryConfig);
 const { SECRET_KEY } = process.env;
 
-module.exports = {
+const resolvers = {
   postLink: (root, { userId, ...args }, context) => context.db.createLink({
     ...args,
     postedBy: { connect: { id: userId } },
   }),
 
-  updateLink: (root, { userId, id, link, ...args }, context) => context.db.updateLink({
-    data: { ...args, postedBy: { connect: { id: userId } } },
-    where: { id },
-  }),
+  async updateLink(root, { userId, id, link, ...args }, context) {
+    const [oldLink, updatedLink] = await Promise.all([
+      context.db.link({ id }),
+      context.db.updateLink({
+        data: { ...args, postedBy: { connect: { id: userId } } },
+        where: { id },
+      }),
+    ]);
+    if (args.imagePublicId) cloudinary.v2.uploader.destroy(oldLink.imagePublicId);
+    return updatedLink;
+  },
 
-  deleteLink: (root, { id }, context) => context.db.deleteLink({ id }),
+  async deleteLink(root, { id }, context) {
+    const deletedLink = await context.db.deleteLink({ id });
+    cloudinary.v2.uploader.destroy(deletedLink.imagePublicId);
+    return deletedLink;
+  },
 
   async signup(root, args, context) {
     const password = await bcrypt.hash(args.password, 10);
@@ -43,4 +58,10 @@ module.exports = {
       id,
     };
   },
+};
+
+export default {
+  ...resolvers,
+  postLink: helmet(resolvers.postLink),
+  updateLink: helmet(resolvers.updateLink),
 };
