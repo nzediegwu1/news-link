@@ -36,7 +36,7 @@ A GraphQL API for managing popular news links. Users can vote their favourite ne
     3. GraphQL yoga
     4. Prisma
     5. Postgres Database
-    6. Docker
+    6. Docker Compose
 
 ## Installation and Setup
 
@@ -44,7 +44,7 @@ A GraphQL API for managing popular news links. Users can vote their favourite ne
 2. Clone this repo `git clone https://github.com/nzediegwu1/news-link.git`
 3. Run "yarn install" to install dependencies
 4. Create and start server for prisma API: `docker-compose up -d`
-5. Deploy prisma api to server: `npx prisma deploy`
+5. Deploy/Migrate prisma data mnodel to database: `npx prisma deploy`
 6. Start application: `yarn start`
 
 ### Finally
